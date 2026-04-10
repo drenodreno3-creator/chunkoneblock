@@ -16,22 +16,16 @@ import java.util.Set;
 public class ChunkOneBlockPlugin extends JavaPlugin implements Listener {
 
     private boolean enabled = true;
-    private final String managedWorldName = "world"; // Weltname
+    private final String managedWorldName = "world";
     private final Set<String> modifiedChunks = new HashSet<>();
     private final Random random = new Random();
 
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
-        getLogger().info("ChunkOneBlock aktiviert!");
+        getLogger().info("Plugin gestartet!");
     }
 
-    @Override
-    public void onDisable() {
-        getLogger().info("ChunkOneBlock deaktiviert!");
-    }
-
-    // 🔥 WICHTIG: Nur beim Betreten eines neuen Chunks
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         if (!enabled || event.getTo() == null) return;
